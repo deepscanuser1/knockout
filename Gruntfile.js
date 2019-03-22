@@ -1,3 +1,4 @@
+
 /*global module:false*/
 module.exports = function(grunt) {
     var _ = grunt.util._;
@@ -36,6 +37,19 @@ module.exports = function(grunt) {
             node: 'spec/runner.node.js'
         }
     });
+    
+    function CWE_398() { // IDENTICAL_BRANCHES
+    if (x >= 0) {
+        y = x;
+    } else {
+        y = x;
+    }
+}
+function CWE_476() { // NULL_POINTER
+    var obj;
+    var y = obj.x;  // UNINITIALIZED_LOCAL_VAR
+    console.log(y);
+}
 
     grunt.registerTask('clean', 'Clean up output files.', function (target) {
         var output = grunt.config('build');
